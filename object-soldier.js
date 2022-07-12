@@ -3,9 +3,9 @@
         health:  10,
         gun: {
             name: 'AK-47',
-            numCartridges: 0,
+            numCartridges: 30,
         },
-        supplies: 1,
+        supplies: 3,
         fire: function(){
             if(this.gun.numCartridges>0){
                 this.gun.numCartridges = this.gun.numCartridges - 1;
@@ -17,10 +17,11 @@
         },
         recharge: function(){
             if(this.gun.numCartridges == 0){
+                this.supplies = this.supplies - 1;
                 console.log('перезарядка ...')
                 this.gun.numCartridges = 30;
-                this.supplies = this.supplies-1;
-            }else if(this.supplies == 0){
+            }
+            if(this.supplies == 0){
                 console.log('не осталось припасов')
             }
         },
@@ -33,3 +34,4 @@
     }
     soldier.fire();
     soldier.recharge();
+    soldier.hurt();
